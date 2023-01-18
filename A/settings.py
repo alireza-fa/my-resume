@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local apps
     'core.apps.CoreConfig',
+    'blog.apps.BlogConfig',
     # third apps
 ]
 
