@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic.base import TemplateView
 
-# Create your views here.
+
+class HomeFaView(TemplateView):
+    template_name = 'index_fa.html'
+
+
+class HomeEnView(TemplateView):
+    template_name = 'index_en.html'
+
