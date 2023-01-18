@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'blog.apps.BlogConfig',
     # third apps
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,11 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# CKEditor
+CKEDITOR_CONFIGS = {
+    'awsome_ckeditor': {
+        'toolbar': 'Full',
+    },
+}
