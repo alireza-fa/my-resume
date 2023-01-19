@@ -1,7 +1,8 @@
 from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
+from django.urls import reverse_lazy
 
-from core.models import AboutMe, QuestionAnswer
+from core.models import AboutMe
 from core.forms import StartProjectFaForm, ContactForm, StartProjectEnForm
 
 
@@ -9,6 +10,7 @@ class HomeFaView(TemplateView):
     template_name = 'index_fa.html'
     start_project_form = StartProjectFaForm
     contact_form = ContactForm
+    success_url = reverse_lazy('core:home_fa')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
@@ -32,8 +34,10 @@ class HomeFaView(TemplateView):
             form = form_class(data=request.POST)
             if form.is_valid():
                 form.save()
-        return redirect('core:home_fa')
+        return redirect(self.success_url)
 
 
-class HomeEnView(TemplateView):
+class HomeEnView(HomeFaView):
     template_name = 'index_en.html'
+    start_project_form = StartProjectEnForm
+    success_url = reverse_lazy('core:home_en')

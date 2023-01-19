@@ -206,6 +206,14 @@ class Project(models.Model):
         return self.name
 
 
+class ProjectEn(Project):
+    class Meta:
+        proxy = True
+
+    def __str__(self):
+        return self.name_en
+
+
 class StartProject(models.Model):
     name = models.CharField(max_length=34, verbose_name=_('name'))
     phone_number = models.CharField(max_length=18, verbose_name=_('phone number'))

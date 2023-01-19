@@ -1,13 +1,12 @@
 from django import forms
 
-from core.models import StartProject, Project, Contact
+from core.models import StartProject, Project, Contact, ProjectEn
 
 
 class StartProjectFaForm(forms.ModelForm):
     subject = forms.ModelChoiceField(
         queryset=Project.objects.all(),
         widget=forms.Select(attrs={"class": 'my-select'}), required=True)
-    form_name = forms.CharField(required=False)
 
     class Meta:
         model = StartProject
@@ -24,8 +23,10 @@ class StartProjectFaForm(forms.ModelForm):
         return start_project
 
 
-class StartProjectEnForm(forms.ModelForm):
-    pass
+class StartProjectEnForm(StartProjectFaForm):
+    subject = forms.ModelChoiceField(
+        queryset=ProjectEn.objects.all(),
+        widget=forms.Select(attrs={"class": 'my-select'}), required=True)
 
 
 class ContactForm(forms.ModelForm):
