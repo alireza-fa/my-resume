@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from core.models import AboutMe
 from core.forms import StartProjectFaForm, ContactForm, StartProjectEnForm
 from blog.models import Post
-from blog.forms import NewsletterSubscribeForm
+from blog.forms import NewsletterSubscribeForm, NewsletterSubscribeEnForm
 
 
 class HomeFaView(TemplateView):
@@ -49,3 +49,4 @@ class HomeEnView(HomeFaView):
     template_name = 'index_en.html'
     start_project_form = StartProjectEnForm
     success_url = reverse_lazy('core:home_en')
+    newsletter_form = NewsletterSubscribeEnForm

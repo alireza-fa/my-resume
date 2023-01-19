@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
+
+{% load datefilter %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -537,101 +540,38 @@
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
+                        {% for post_list in posts_part %}
+                        {% for post in post_list %}
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="single-blog">
                                 <div class="part-img">
-                                    <img src="{% static 'images/blog-img-1.jpg' %}" alt="Image">
+                                    <img src="{{ post.image_cover.url }}" alt="{{ post.title_en }}">
                                 </div>
                                 <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">Top 10 JavaScript Frameworks to Learn in 2022</a></h3>
+                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal{{ post.id }}">{{ post.title_en }}</a></h3>
                                     <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>Daisy Moore</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>27 Sep 2022</li>
+                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>{{ post.author_en }}</li>
+                                        <li><span><i class="fa-duotone fa-calendar"></i></span>{{ post.date|date_format }}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-2.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">Integrate ReactJS into a legacy Dojo application</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>Saumya Daga</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>16 Dec 2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-3.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">Go from Markdown to HTML5 with marked-it</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>Jenifer</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>16 Aug 2020</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
+                        {% if forloop.counter == 1 %}
                         <div class="col-12">
                             <div class="subscribe-wrap">
                                 <div class="subscribe">
                                     <h3>subscribe my newsletter</h3>
-                                    <form>
-                                        <input type="email" placeholder="Enter your email address...">
-                                        <button class="def-btn">Subscribe</button>
+                                    <form action="" method="post">{% csrf_token %}
+                                        {{ newsletter_form.email }}
+                                        <input type="hidden" name="form_class" value="newsletter_form">
+                                        <button type="submit" class="def-btn">Subscribe</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-4.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">Bootstrap: Creating Menus, Navbars, and Modals</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>Daisy Moore</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>27 Sep 2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-5.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">GDPR and WordPress: Why You Need to be Concerned</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>Daisy Moore</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>27 Sep 2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-6.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">Web Based CRM Solutions – All You Need to Know</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>Tarun Gupta</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>27 Sep 2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -781,35 +721,32 @@
 
 
     <!-- ============ BLOG MODAL ============ -->
-    <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+    {% for post in posts %}
+    <div class="modal fade" id="blogModal{{ post.id }}" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="blogModalLabel">My Article Collection</h5>
                     <button type="button" data-bs-dismiss="modal"><i class="fa-light fa-xmark"></i></button>
                 </div>
                 <div class="modal-body">
                     <div class="blog-details">
                         <div class="part-img">
-                            <img src="{% static 'images/blog-details.jpg' %}" alt="Image">
+                            <img src="{{ post.image.url }}" alt="{{ post.title_en }}">
                         </div>
                         <div class="part-txt">
-                            <h2 class="blog-title">Integrate ReactJS into a legacy Dojo application</h2>
+                            <h2 class="blog-title">{{ post.title_en }}</h2>
                             <ul>
-                                <li><span><i class="fa-duotone fa-user-pen"></i></span>Saumya Daga</li>
-                                <li><span><i class="fa-duotone fa-calendar"></i></span>16 Dec 2021</li>
+                                <li><span><i class="fa-duotone fa-user-pen"></i></span>{{ post.author_en }}</li>
+                                <li><span><i class="fa-duotone fa-calendar"></i></span>{{ post.date|date_format }}</li>
                             </ul>
-                            <p>Because technology moves fast, it’s easy to feel left behind. An old version of a JavaScript library is making your application perform slowly. You spend most of your time patching old code. Your UI looks like it was created years ago, but you don’t have time to update it.</p>
-                            <p>Our team recently faced all these challenges when our 10-year-old product was using an old version of the Dojo toolkit. To migrate to the latest version of Dojo, we needed to rewrite the whole code with an asynchronous model. Our solution also needed to improve performance and provide a rich UI experience that complies with the IBM Carbon theme.</p>
-                            <p class="marked">After a lot of research, we decided to use React JS instead of upgrading to a new version of Dojo.</p>
-                            <p>After a lot of research, we decided to use React JS instead of upgrading to a new version of Dojo. This blog post introduces ReactJS, highlights the research we did when comparing ReactJS with other JavaScript languages, and explains how we integrated ReactJS with our current Dojo library.</p>
-                            <p>Solution: Our goal was to develop new pages with ReactJS and integrate them into our existing legacy Dojo application. We also needed to create reusable components of React in order to implement a single-page application quickly and migrate our whole application page-by-page in the long run.</p>
+                            {{ post.body_en|safe }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
     <!-- ============ BLOG MODAL ============ -->
 
 

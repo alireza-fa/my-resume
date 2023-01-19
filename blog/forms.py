@@ -11,3 +11,13 @@ class NewsletterSubscribeForm(forms.ModelForm):
         widgets = {
             "email": forms.EmailInput(attrs={"placeholder": 'آدرس ایمیل خود را وارد کنید ...'})
         }
+
+
+class NewsletterSubscribeEnForm(forms.ModelForm):
+    class Meta:
+        model = NewsletterSubscribe
+        fields = ('email',)
+
+        widgets = {
+            "email": forms.EmailInput(attrs={"placeholder": 'Enter your email address...'})
+        }
