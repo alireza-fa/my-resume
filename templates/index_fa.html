@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
+
+{% load datefilter %}
+
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
@@ -539,101 +542,38 @@
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
+                        {% for post_list in posts_part %}
+                        {% for post in post_list %}
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="single-blog">
                                 <div class="part-img">
-                                    <img src="{% static 'images/blog-img-1.jpg' %}" alt="Image">
+                                    <img src="{{ post.image_cover.url }}" alt="{{ post.title }}">
                                 </div>
                                 <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">10 فریمورک برتر جاوا اسکریپت برای یادگیری در سال 2022</a></h3>
+                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal{{ post.id }}">{{ post.title }}</a></h3>
                                     <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>علی سلیمانی</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>28 مهر 1401</li>
+                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>{{ post.author }}</li>
+                                        <li><span><i class="fa-duotone fa-calendar"></i></span>{{ post.date|khayyam }}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-2.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">چگونه ReactJS را در یک برنامه قدیمی Dojo ادغام کنیم</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>علی سلیمانی</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>28 مهر 1401</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-3.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">با علامت گذاری شده از Markdown به HTML5 بروید</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>علی سلیمانی</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>28 مهر 1401</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
+                        {% if forloop.counter == 1 %}
                         <div class="col-12">
                             <div class="subscribe-wrap">
                                 <div class="subscribe">
                                     <h3>عضو خبرنامه ما شوید</h3>
-                                    <form>
-                                        <input type="email" placeholder="آدرس ایمیل خود را وارد کنید ...">
-                                        <button class="def-btn">عضویت</button>
+                                    <form action="" method="post">{% csrf_token %}
+                                        {{ newsletter_form.email }}
+                                        <input type="hidden" name="form_class" value="newsletter_form">
+                                        <button type="submit" class="def-btn">عضویت</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-4.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">بوت استرپ: ایجاد منوها، نوارهای ناوبری و مدال ها</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>علی سلیمانی</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>28 مهر 1401</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-5.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal"> بررسی GDPR و وردپرس: چرا باید نگران باشید و راهکار چیست</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>علی سلیمانی</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>28 مهر 1401</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-8">
-                            <div class="single-blog">
-                                <div class="part-img">
-                                    <img src="{% static 'images/blog-img-6.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <h3><a href="#" data-bs-toggle="modal" data-bs-target="#blogModal">راه حل های CRM مبتنی بر وب - همه آنچه که باید بدانید</a></h3>
-                                    <ul>
-                                        <li><span><i class="fa-duotone fa-user-pen"></i></span>علی سلیمانی</li>
-                                        <li><span><i class="fa-duotone fa-calendar"></i></span>28 مهر 1401</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -783,35 +723,32 @@
 
 
     <!-- ============ BLOG MODAL ============ -->
-    <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+    {% for post in posts %}
+    <div class="modal fade" id="blogModal{{ post.id }}" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="blogModalLabel">مجموعه مقالات من</h5>
                     <button type="button" data-bs-dismiss="modal"><i class="fa-light fa-xmark"></i></button>
                 </div>
                 <div class="modal-body">
                     <div class="blog-details">
                         <div class="part-img">
-                            <img src="{% static 'images/blog-details.jpg' %}" alt="Image">
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}">
                         </div>
                         <div class="part-txt">
-                            <h2 class="blog-title">چگونه ReactJS را در یک برنامه قدیمی Dojo ادغام کنیم</h2>
+                            <h2 class="blog-title">{{ post.title }}</h2>
                             <ul>
-                                <li><span><i class="fa-duotone fa-user-pen"></i></span>علی سلیمانی</li>
-                                <li><span><i class="fa-duotone fa-calendar"></i></span>28 مهر 1401</li>
+                                <li><span><i class="fa-duotone fa-user-pen"></i></span>{{ post.author }}</li>
+                                <li><span><i class="fa-duotone fa-calendar"></i></span>{{ post.date|khayyam }}</li>
                             </ul>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. </p>
-                            <p>کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد.</p>
-                            <p class="marked">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد.</p>
-                            <p>تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                            {{ post.body|safe }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
     <!-- ============ BLOG MODAL ============ -->
 
 

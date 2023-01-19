@@ -27,3 +27,24 @@ class Post(models.Model):
     class Meta:
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
+
+    @classmethod
+    def get_posts_two_part(cls):
+        posts = cls.objects.all()
+        posts_count = posts.count()
+        posts_half_count = round(posts_count / 2)
+        post_part_one = posts[:posts_half_count]
+        post_part_two = posts[posts_half_count:]
+        post_part = [post_part_one, post_part_two]
+        return post_part
+
+
+class NewsletterSubscribe(models.Model):
+    email = models.EmailField(max_length=120, verbose_name=_('email'))
+
+    class Meta:
+        verbose_name = _('Newsletter Subscribe')
+        verbose_name_plural = _('Newsletters Subscribes')
+
+    def __str__(self):
+        return self.email

@@ -4,12 +4,15 @@ from django.urls import reverse_lazy
 
 from core.models import AboutMe
 from core.forms import StartProjectFaForm, ContactForm, StartProjectEnForm
+from blog.models import Post
+from blog.forms import NewsletterSubscribeForm
 
 
 class HomeFaView(TemplateView):
     template_name = 'index_fa.html'
     start_project_form = StartProjectFaForm
     contact_form = ContactForm
+    newsletter_form = NewsletterSubscribeForm
     success_url = reverse_lazy('core:home_fa')
 
     def get_context_data(self, **kwargs):
@@ -17,6 +20,9 @@ class HomeFaView(TemplateView):
         context['me'] = AboutMe.get_info()
         context['project_form'] = self.start_project_form(initial={"form_name": 'project_form'})
         context['contact_form'] = self.contact_form()
+        context['newsletter_form'] = self.newsletter_form()
+        context['posts_part'] = Post.get_posts_two_part()
+        context['posts'] = Post.objects.all()
         return context
 
     def get_form_class(self):
@@ -26,6 +32,8 @@ class HomeFaView(TemplateView):
                 return self.start_project_form
             elif form_name == 'contact_form':
                 return self.contact_form
+            elif form_name == 'newsletter_form':
+                return self.newsletter_form
         return None
 
     def post(self, request):
