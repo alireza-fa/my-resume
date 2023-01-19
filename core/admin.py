@@ -18,7 +18,7 @@ class MeEmailAddressInline(admin.TabularInline):
 @admin.register(AboutMe)
 class AboutMeAdmin(admin.ModelAdmin):
     list_display = ('name', 'profession', 'year_experience')
-    inlines = (MeEmailAddressInline, MeEmailAddressInline)
+    inlines = (MePhoneNumberInline, MeEmailAddressInline)
 
 
 @admin.register(Skill)
@@ -76,6 +76,7 @@ class ContactAdmin(admin.ModelAdmin):
 class CategoryWorkSampleAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_active')
     list_filter = ('is_active',)
+    prepopulated_fields = {"filter_tag": ('name_en',)}
 
 
 @admin.register(WorkSamples)

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devolin - قالب HTML نمونه کارها شخصی</title>
+    <title>وب سایت شخصی {{ me.info.about.name }}</title>
 
     
     <!-- ============ FAVICON ============ -->
@@ -74,10 +74,10 @@
         <!-- ============ BANNER SECTION START ============ -->
         <div class="banner">
             <div class="main-social">
-                <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" title="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#" title="Skype"><i class="fa-brands fa-skype"></i></a>
+                <a href="{{ me.info.about.facebook }}" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="{{ me.info.about.twitter }}" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="{{ me.info.about.linkedin }}" title="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="{{ me.info.about.skype }}" title="Skype"><i class="fa-brands fa-skype"></i></a>
             </div>
             <div class="container">
                 <div class="row align-items-center">
@@ -132,12 +132,12 @@
                     <div class="col-md-6">
                         <div class="banner-txt">
                             <h3>سلام!</h3>
-                            <h1><span>من</span> علی سلیمانی <span>هستم.</span></h1>
-                            <h2>طراح و توسعه دهنده وردپرس</h2>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
+                            <h1><span>من</span> {{ me.info.about.name }} <span>هستم.</span></h1>
+                            <h2>{{ me.info.about.profession }}</h2>
+                            <p>{{ me.info.about.describe_short }}</p>
                             <div class="btn-box">
                                 <a href="#" class="section-btn def-btn" data-section="about"><i class="fa-light fa-user"></i> درباره من</a>
-                                <a href="#" class="def-btn"><i class="fa-light fa-file-lines"></i> دانلود رزومه</a>
+                                <a href="{{ me.info.about.resume.url }}" class="def-btn"><i class="fa-light fa-file-lines"></i> دانلود رزومه</a>
                             </div>
                         </div>
                     </div>
@@ -155,75 +155,27 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-lg-5 col-md-6">
                             <div class="part-img">
-                                <img src="{% static 'images/about-img.png' %}" alt="image">
+                                <img src="{{ me.info.about.image.url }}" alt="image">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="part-txt">
                                 <h2 class="section-title">درباره <span>من</span></h2>
-                                <p>من یک طراح و توسعه دهنده وردپرس هستم.</p>
-                                <p>انگیزه من ساخت بهترین طراحی وب با سالها تجربه است. هدف لورم ایپسوم ایجاد یک بلوک متنی به ظاهر طبیعی است که حواس را از چیدمان منحرف نکند.</p>
+                                <p>من یک {{ me.info.about.profession }} هستم.</p>
+                                <p>{{ me.info.about.describe }}</p>
                                 <div class="progress-wrap">
+                                    {% for skill in me.info.skills.all %}
                                     <div class="progress-box">
                                         <div class="circle-progressbar" data-animate="false">
-                                            <div class="circle" data-percent="90" data-thick="15">
+                                            <div class="circle" data-percent="{{ skill.percent }}" data-thick="15">
                                                 <div class="txt">
                                                     <span class="percent"></span>
-                                                    <p>گرافیک</p>
+                                                    <p>{{ skill.name }}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="progress-box">
-                                        <div class="circle-progressbar" data-animate="false">
-                                            <div class="circle" data-percent="85" data-thick="15">
-                                                <div class="txt">
-                                                    <span class="percent"></span>
-                                                    <p>توسعه</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-box">
-                                        <div class="circle-progressbar" data-animate="false">
-                                            <div class="circle" data-percent="70" data-thick="15">
-                                                <div class="txt">
-                                                    <span class="percent"></span>
-                                                    <p>مارکتینگ</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-box">
-                                        <div class="circle-progressbar" data-animate="false">
-                                            <div class="circle" data-percent="60" data-thick="15">
-                                                <div class="txt">
-                                                    <span class="percent"></span>
-                                                    <p>محتوانویسی</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-box">
-                                        <div class="circle-progressbar" data-animate="false">
-                                            <div class="circle" data-percent="90" data-thick="15">
-                                                <div class="txt">
-                                                    <span class="percent"></span>
-                                                    <p>طراحی UI/UX</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-box">
-                                        <div class="circle-progressbar" data-animate="false">
-                                            <div class="circle" data-percent="50" data-thick="15">
-                                                <div class="txt">
-                                                    <span class="percent"></span>
-                                                    <p>سئو (SEO)</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -238,7 +190,7 @@
                                 <div class="part-icon">
                                     <span><i class="fa-thin fa-badge-check"></i></span>
                                 </div>
-                                <h2><span class="odometer" data-count="8">0</span>+</h2>
+                                <h2><span class="odometer" data-count="{{ me.info.about.year_experience }}">0</span>+</h2>
                                 <p>سال تجربه کاری</p>
                             </div>
                         </div>
@@ -247,7 +199,7 @@
                                 <div class="part-icon">
                                     <span><i class="fa-thin fa-list-check"></i></span>
                                 </div>
-                                <h2><span class="odometer" data-count="480">0</span>+</h2>
+                                <h2><span class="odometer" data-count="{{ me.info.about.project_count }}">0</span>+</h2>
                                 <p>پروژه انجام شده</p>
                             </div>
                         </div>
@@ -256,7 +208,7 @@
                                 <div class="part-icon">
                                     <span><i class="fa-thin fa-users"></i></span>
                                 </div>
-                                <h2><span class="odometer" data-count="369">0</span>+</h2>
+                                <h2><span class="odometer" data-count="{{ me.info.about.customer_count }}">0</span>+</h2>
                                 <p>مشتری راضی</p>
                             </div>
                         </div>
@@ -265,7 +217,7 @@
                                 <div class="part-icon">
                                     <span><i class="fa-thin fa-mug-hot"></i></span>
                                 </div>
-                                <h2><span class="odometer" data-count="959">0</span>+</h2>
+                                <h2><span class="odometer" data-count="{{ me.info.about.tea_count }}">0</span>+</h2>
                                 <p>فنجان چای</p>
                             </div>
                         </div>
@@ -278,81 +230,29 @@
                         <div class="col-md-6">
                             <h2 class="section-title">تحصیلات</h2>
                             <ul>
+                                {% for education in me.info.educations %}
                                 <li>
                                     <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">کارشناسی ارشد در طراحی</h3>
-                                        <p>دانشگاه نیویورک</p>
+                                        <span class="duration">{{ education.date }}</span>
+                                        <h3 class="title">{{ education.grade }}</h3>
+                                        <p>{{ education.academy }}</p>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">لیسانس هنر</h3>
-                                        <p>دانشگاه لندن</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">هنرمند کلاژ</h3>
-                                        <p>دانشگاه سیدنی</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">کارشناسی ارشد توسعه</h3>
-                                        <p>دانشگاه ولز</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">دیپلم کامپیوتر</h3>
-                                        <p>دانشگاه قاهره</p>
-                                    </div>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <h2 class="section-title">تجربیات</h2>
                             <ul>
+                                {% for ex in me.info.experiences %}
                                 <li>
                                     <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">توسعه دهنده وب</h3>
-                                        <p>سرویس آی تی کاکلی</p>
+                                        <span class="duration">{{ ex.date }}</span>
+                                        <h3 class="title">{{ ex.position }}</h3>
+                                        <p>{{ ex.company_name }}</p>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">توسعه دهنده React</h3>
-                                        <p>نرم افزار آکودا</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">توسعه دهنده وب</h3>
-                                        <p>تیم نرم افزاری موهینو</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">مدیر پروژه</h3>
-                                        <p>شرکت طراحی وب دیزاین</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-box">
-                                        <span class="duration">1400 - 1395</span>
-                                        <h3 class="title">سرپرست تیم</h3>
-                                        <p>شرکت تبلیغاتی برتر</p>
-                                    </div>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -373,72 +273,19 @@
                         </div>
                     </div>
                     <div class="row g-md-4 g-sm-3 g-4 justify-content-between">
+                        {% for profession in me.info.professions %}
                         <div class="col-lg-4 col-sm-6">
                             <div class="single-service-box">
                                 <div class="part-icon">
-                                    <span><i class="fa-thin fa-laptop-code"></i></span>
+                                    <span><i class="fa-thin {{ profession.type }}"></i></span>
                                 </div>
                                 <div class="part-txt">
-                                    <h3>طراحی سایت</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                                    <h3>{{ profession.name }}</h3>
+                                    <p>{{ profession.description }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-service-box">
-                                <div class="part-icon">
-                                    <span><i class="fa-thin fa-object-ungroup"></i></span>
-                                </div>
-                                <div class="part-txt">
-                                    <h3>طراحی UI</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-service-box">
-                                <div class="part-icon">
-                                    <span><i class="fa-thin fa-palette"></i></span>
-                                </div>
-                                <div class="part-txt">
-                                    <h3>طراحی لوگو</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-service-box">
-                                <div class="part-icon">
-                                    <span><i class="fa-thin fa-camera-retro"></i></span>
-                                </div>
-                                <div class="part-txt">
-                                    <h3>عکاسی</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-service-box">
-                                <div class="part-icon">
-                                    <span><i class="fa-thin fa-film"></i></span>
-                                </div>
-                                <div class="part-txt">
-                                    <h3>ویرایش ویدیو</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-service-box">
-                                <div class="part-icon">
-                                    <span><i class="fa-thin fa-bullhorn"></i></span>
-                                </div>
-                                <div class="part-txt">
-                                    <h3>سوشیال مارکتینگ</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -469,12 +316,9 @@
                                 </div>
                                 <div class="middle">
                                     <ul>
-                                        <li>طراحی وب سایت <span>2.5 م.ت <small>(هر پروژه)</small></span></li>
-                                        <li>طراحی UI <span>2.5 م.ت <small>(هر پروژه)</small></span></li>
-                                        <li>طراحی لوگو <span>1.0 م.ت <small>(هر پروژه)</small></span></li>
-                                        <li>عکاسی <span>300 ه.ت <small>(هر پروژه)</small></span></li>
-                                        <li>ویرایش ویدیو <span>200 ه.ت <small>(هر پروژه)</small></span></li>
-                                        <li>سوشیال مارکتینگ <span>1.5 م.ت <small>(هر پروژه)</small></span></li>
+                                        {% for project in me.info.projects %}
+                                        <li>{{ project.name }}<span>{{ project.price_one_project }}  <small>(هر پروژه)</small></span></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                                 <div class="bottom">
@@ -492,12 +336,9 @@
                                 </div>
                                 <div class="middle">
                                     <ul>
-                                        <li>طراحی وب سایت <span>2.4 م.ت <small>(هر پروژه)</small></span></li>
-                                        <li>طراحی UI <span>2.4 م.ت <small>(هر پروژه)</small></span></li>
-                                        <li>طراحی لوگو <span>900 ه.ت <small>(هر پروژه)</small></span></li>
-                                        <li>عکاسی <span>280 ه.ت <small>(هر پروژه)</small></span></li>
-                                        <li>ویرایش ویدیو <span>190 ه.ت <small>(هر پروژه)</small></span></li>
-                                        <li>سوشیال مارکتینگ <span>1.200 م.ت <small>(هر پروژه)</small></span></li>
+                                        {% for project in me.info.projects %}
+                                        <li>{{ project.name }}<span>{{ project.price_many_project }}  <small>(هر پروژه)</small></span></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                                 <div class="bottom">
@@ -515,12 +356,9 @@
                                 </div>
                                 <div class="middle">
                                     <ul>
-                                        <li>طراحی وب سایت <span>500 ه.ت <small>(هر روز)</small></span></li>
-                                        <li>طراحی UI <span>500 ه.ت <small>(هر روز)</small></span></li>
-                                        <li>طراحی لوگو <span>100 ه.ت <small>(هر روز)</small></span></li>
-                                        <li>عکاسی <span>100 ه.ت <small>(هر روز)</small></span></li>
-                                        <li>ویرایش ویدیو <span>70 ه.ت <small>(هر روز)</small></span></li>
-                                        <li>سوشیال مارکتینگ <span>250 ه.ت <small>(هر روز)</small></span></li>
+                                        {% for project in me.info.projects %}
+                                        <li>{{ project.name }}<span>{{ project.price_one_day }}  <small>(هر پروژه)</small></span></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                                 <div class="bottom">
@@ -547,162 +385,39 @@
                     </div>
                     <div class="filter-nav">
                         <button class="filter-btn active" data-filter="all">نمایش همه</button>
-                        <button class="filter-btn" data-filter="web">طراحی سایت</button>
-                        <button class="filter-btn" data-filter="ui">طراحی UI</button>
-                        <button class="filter-btn" data-filter="photo-g">عکاسی</button>
-                        <button class="filter-btn" data-filter="marketing">بازاریابی</button>
+                        {% for category in me.info.categories %}
+                        <button class="filter-btn" data-filter="{{ category.filter_tag }}">{{ category.name }}</button>
+                        {% endfor %}
                     </div>
                     <div class="portfolio-row">
-                        <div class="custom-col web">
+                        {% for ws in me.info.work_samples %}
+                        <div class="custom-col {{ ws.category.filter_tag }}">
                             <div class="single-portfolio-box">
                                 <div class="part-img">
-                                    <img src="{% static 'images/portfolio-img-1.jpg' %}" alt="Image">
+                                    <img src="{{ ws.image.url }}" alt="{{ ws.title }}">
                                 </div>
                                 <div class="part-txt">
-                                    <span class="category">طراحی سایت</span>
-                                    <h3>طراحی وب سایت فروشگاهی اوماک</h3>
+                                    <span class="category">{{ ws.category.name }}</span>
+                                    <h3>{{ ws.title }}</h3>
                                     <ul class="info">
-                                        <li><span>شروع:</span> 1401/12/05</li>
-                                        <li><span>پایان:</span> 1401/12/15</li>
+                                        <li><span>شروع:</span> {{ ws.start_at }}</li>
+                                        <li><span>پایان:</span> {{ ws.end_at }}</li>
                                     </ul>
                                     <div class="bottom">
                                         <div class="star">
+                                            {% for _ in ws.get_generate_rate %}
                                             <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            {% endfor %}
+                                            {% for _ in ws.get_generate_un_rate %}
                                             <i class="fa-solid fa-star-sharp"></i>
+                                            {% endfor %}
                                         </div>
-                                        <a href="#">مشاهده وب سایت <span><i class="fa-regular fa-arrow-left"></i></span></a>
+                                        <a href="{{ ws.website_url }}">مشاهده وب سایت <span><i class="fa-regular fa-arrow-left"></i></span></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="custom-col ui">
-                            <div class="single-portfolio-box">
-                                <div class="part-img">
-                                    <img src="{% static 'images/portfolio-img-2.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <span class="category">طراحی UI</span>
-                                    <h3>طراحی اپلیکیشن اندروید برای آژانس اوماک</h3>
-                                    <ul class="info">
-                                        <li><span>شروع:</span> 1401/12/05</li>
-                                        <li><span>پایان:</span> 1401/12/15</li>
-                                    </ul>
-                                    <div class="bottom">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp"></i>
-                                        </div>
-                                        <a href="#">مشاهده وب سایت <span><i class="fa-regular fa-arrow-left"></i></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-col ui">
-                            <div class="single-portfolio-box">
-                                <div class="part-img">
-                                    <img src="{% static 'images/portfolio-img-3.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <span class="category">طراحی لوگو</span>
-                                    <h3>طراحی لوگوی زیبایی برای لوازم آرایشی اوماک</h3>
-                                    <ul class="info">
-                                        <li><span>شروع:</span> 1401/12/05</li>
-                                        <li><span>پایان:</span> 1401/12/15</li>
-                                    </ul>
-                                    <div class="bottom">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp"></i>
-                                        </div>
-                                        <a href="#">مشاهده وب سایت <span><i class="fa-regular fa-arrow-left"></i></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-col ui">
-                            <div class="single-portfolio-box">
-                                <div class="part-img">
-                                    <img src="{% static 'images/portfolio-img-4.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <span class="category">طراحی UI</span>
-                                    <h3>طراحی اپلیکیشن اندروید برای پلیر موسیقی پادر</h3>
-                                    <ul class="info">
-                                        <li><span>شروع:</span> 1401/12/05</li>
-                                        <li><span>پایان:</span> 1401/12/15</li>
-                                    </ul>
-                                    <div class="bottom">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp"></i>
-                                        </div>
-                                        <a href="#">مشاهده وب سایت <span><i class="fa-regular fa-arrow-left"></i></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-col photo-g">
-                            <div class="single-portfolio-box">
-                                <div class="part-img">
-                                    <img src="{% static 'images/portfolio-img-5.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <span class="category">عکاسی</span>
-                                    <h3>عکاسی از نمایشگاه نقاشی 1401</h3>
-                                    <ul class="info">
-                                        <li><span>شروع:</span> 1401/12/05</li>
-                                        <li><span>پایان:</span> 1401/12/15</li>
-                                    </ul>
-                                    <div class="bottom">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp"></i>
-                                        </div>
-                                        <a href="#">مشاهده وب سایت <span><i class="fa-regular fa-arrow-left"></i></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-col web">
-                            <div class="single-portfolio-box">
-                                <div class="part-img">
-                                    <img src="{% static 'images/portfolio-img-6.jpg' %}" alt="Image">
-                                </div>
-                                <div class="part-txt">
-                                    <span class="category">طراحی سایت</span>
-                                    <h3>طراحی وب سایت شخصی و رزومه</h3>
-                                    <ul class="info">
-                                        <li><span>شروع:</span> 1401/12/05</li>
-                                        <li><span>پایان:</span> 1401/12/15</li>
-                                    </ul>
-                                    <div class="bottom">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp rated"></i>
-                                            <i class="fa-solid fa-star-sharp"></i>
-                                        </div>
-                                        <a href="#">مشاهده وب سایت <span><i class="fa-regular fa-arrow-left"></i></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                         <h3 class="empty-msg">چیزی برای نمایش در این دسته وجود ندارد &#128549;</h3>
                     </div>
                 </div>
@@ -710,27 +425,11 @@
             <div class="our-client">
                 <div class="container">
                     <div class="client-slider" dir="rtl">
+                        {% for partner in me.info.partners %}
                         <div class="single-client">
-                            <img src="{% static 'images/client-1.png' %}" alt="Logo">
+                            <img src="{{ partner.image.url }}" alt="{{ partner.name }}">
                         </div>
-                        <div class="single-client">
-                            <img src="{% static 'images/client-2.png' %}" alt="Logo">
-                        </div>
-                        <div class="single-client">
-                            <img src="{% static 'images/client-3.png' %}" alt="Logo">
-                        </div>
-                        <div class="single-client">
-                            <img src="{% static 'images/client-4.png' %}" alt="Logo">
-                        </div>
-                        <div class="single-client">
-                            <img src="{% static 'images/client-5.png' %}" alt="Logo">
-                        </div>
-                        <div class="single-client">
-                            <img src="{% static 'images/client-6.png' %}" alt="Logo">
-                        </div>
-                        <div class="single-client">
-                            <img src="{% static 'images/client-7.png' %}" alt="Logo">
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -744,36 +443,18 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-8 col-md-10">
                             <div class="testimonial-slider">
+                                {% for feedback in me.info.feedbacks %}
                                 <div class="single-feedback">
                                     <div class="part-img">
-                                        <img src="{% static 'images/testimonial-img-1.jpg' %}" alt="Image">
+                                        <img src="{{ feedback.image.url }}" alt="{{ feedback.fullname }}">
                                     </div>
                                     <div class="part-txt">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                        <h3>امین دادجو</h3>
-                                        <span>مدیر وب سایت لوازم آرایشی</span>
+                                        <p>{{ feedback.description }}</p>
+                                        <h3>{{ feedback.fullname }}</h3>
+                                        <span>{{ feedback.position }}</span>
                                     </div>
                                 </div>
-                                <div class="single-feedback">
-                                    <div class="part-img">
-                                        <img src="{% static 'images/testimonial-img-2.jpg' %}" alt="Image">
-                                    </div>
-                                    <div class="part-txt">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                        <h3>لاله ایراندوست</h3>
-                                        <span>مدیر وب سایت پادکست</span>
-                                    </div>
-                                </div>
-                                <div class="single-feedback">
-                                    <div class="part-img">
-                                        <img src="{% static 'images/testimonial-img-3.jpg' %}" alt="Image">
-                                    </div>
-                                    <div class="part-txt">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                        <h3>رضا محمدی</h3>
-                                        <span>مدیر فروشگاه اینترنتی</span>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -796,72 +477,19 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-8 col-lg-10">
                             <div class="faq-box">
+                                {% for qa in me.info.questions %}
                                 <div class="single-card">
                                     <div class="faq-header">
-                                        <h3>ساخت یک وب سایت چقدر طول می کشد؟</h3>
-                                        <div class="icon">
-                                            <i class="fa-light fa-minus"></i>
-                                        </div>
-                                    </div>
-                                    <div class="faq-body">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                    </div>
-                                </div>
-                                <div class="single-card">
-                                    <div class="faq-header">
-                                        <h3>آیا وب سایت های موجود را دوباره طراحی می کنید؟</h3>
+                                        <h3>{{ qa.question }}</h3>
                                         <div class="icon">
                                             <i class="fa-light fa-plus"></i>
                                         </div>
                                     </div>
                                     <div class="faq-body">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                                        <p>{{ qa.answer }}</p>
                                     </div>
                                 </div>
-                                <div class="single-card">
-                                    <div class="faq-header">
-                                        <h3>آیا در سطح بین المللی کار می کنید؟</h3>
-                                        <div class="icon">
-                                            <i class="fa-light fa-plus"></i>
-                                        </div>
-                                    </div>
-                                    <div class="faq-body">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                    </div>
-                                </div>
-                                <div class="single-card">
-                                    <div class="faq-header">
-                                        <h3>آیا وب سایت من روی تلفن های هوشمند و تبلت ها نیز کار می کند؟</h3>
-                                        <div class="icon">
-                                            <i class="fa-light fa-plus"></i>
-                                        </div>
-                                    </div>
-                                    <div class="faq-body">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                    </div>
-                                </div>
-                                <div class="single-card">
-                                    <div class="faq-header">
-                                        <h3>آیا می توانید به من کمک کنید تا رتبه بالایی در گوگل کسب کنم؟</h3>
-                                        <div class="icon">
-                                            <i class="fa-light fa-plus"></i>
-                                        </div>
-                                    </div>
-                                    <div class="faq-body">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                    </div>
-                                </div>
-                                <div class="single-card">
-                                    <div class="faq-header">
-                                        <h3>هزینه یک وب سایت چقدر است؟</h3>
-                                        <div class="icon">
-                                            <i class="fa-light fa-plus"></i>
-                                        </div>
-                                    </div>
-                                    <div class="faq-body">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -882,69 +510,17 @@
                         </div>
                     </div>
                     <div class="row g-4">
-                        <div class="col-lg-8">
+                        {% for gallery in me.info.galleries %}
+                        <div class="{{ gallery.size }}">
                             <div class="single-img">
-                                <img src="{% static 'images/gallery-1.jpg' %}" alt="image">
+                                <img src="{{ gallery.image.url }}" alt="{{ gallery.name }}">
                                 <div class="hover">
                                     <button><i class="fa-light fa-plus"></i></button>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                                    <p>{{ gallery.title }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-img">
-                                <img src="{% static 'images/gallery-2.jpg' %}" alt="image">
-                                <div class="hover">
-                                    <button><i class="fa-light fa-plus"></i></button>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-img">
-                                <img src="{% static 'images/gallery-3.jpg' %}" alt="image">
-                                <div class="hover">
-                                    <button><i class="fa-light fa-plus"></i></button>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-img">
-                                <img src="{% static 'images/gallery-4.jpg' %}" alt="image">
-                                <div class="hover">
-                                    <button><i class="fa-light fa-plus"></i></button>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-img">
-                                <img src="{% static 'images/gallery-5.jpg' %}" alt="image">
-                                <div class="hover">
-                                    <button><i class="fa-light fa-plus"></i></button>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single-img">
-                                <img src="{% static 'images/gallery-6.jpg' %}" alt="image">
-                                <div class="hover">
-                                    <button><i class="fa-light fa-plus"></i></button>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="single-img">
-                                <img src="{% static 'images/gallery-7.jpg' %}" alt="image">
-                                <div class="hover">
-                                    <button><i class="fa-light fa-plus"></i></button>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %} >
                     </div>
                 </div>
             </div>
@@ -1077,24 +653,29 @@
                     </div>
                     <div class="row g-0 justify-content-center">
                         <div class="col-lg-6 col-md-7 col-sm-6 order-e">
-                            <form class="contact-form">
+                            <form class="contact-form" action="" method="post">{% csrf_token %}
                                 <div class="form-group">
                                     <label>نام کامل شما</label>
-                                    <input type="text" name="name" required>
+                                    {{ contact_form.fullname }}
+                                </div>
+                                <div class="form-group">
+                                    <label>شماره موبایل شما</label>
+                                    {{ contact_form.phone_number }}
                                 </div>
                                 <div class="form-group">
                                     <label>آدرس ایمیل شما</label>
-                                    <input type="email" name="email" required>
+                                    {{ contact_form.email }}
                                 </div>
                                 <div class="form-group">
                                     <label>موضوع</label>
-                                    <input type="text" name="subject" required>
+                                    {{ contact_form.subject }}
                                 </div>
                                 <div class="form-group">
                                     <label>پیام تان را بنویسید</label>
-                                    <textarea name="message" required></textarea>
+                                    {{ contact_form.message }}
                                 </div>
-                                <button class="def-btn">ارسال پیام</button>
+                                <input type="hidden" name="form_class" value="contact_form">
+                                <button class="def-btn" type="submit">ارسال پیام</button>
                             </form>
                         </div>
                         <div class="col-lg-4 col-md-5 col-sm-6">
@@ -1104,8 +685,9 @@
                                         <i class="fa-duotone fa-phone"></i>
                                     </div>
                                     <div class="part-txt">
-                                        <a href="#">+12 345 678 900</a>
-                                        <a href="#">+12 345 678 900</a>
+                                        {% for number in me.info.about.phone_numbers.all %}
+                                        <a href="#">{{ number.phone_number }}</a>
+                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="single-box">
@@ -1113,8 +695,9 @@
                                         <i class="fa-duotone fa-envelope"></i>
                                     </div>
                                     <div class="part-txt">
-                                        <a href="#">example@gmail.com</a>
-                                        <a href="#">example@gmail.com</a>
+                                        {% for me_email in me.info.about.emails.all %}
+                                        <a href="#">{{ me_email.email }}</a>
+                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="single-box">
@@ -1122,7 +705,7 @@
                                         <i class="fa-duotone fa-map-location-dot"></i>
                                     </div>
                                     <div class="part-txt">
-                                        <p>ایران، استان خراسان رضوی، مشهد</p>
+                                        <p>{{ me.info.about.address }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -1144,44 +727,43 @@
                     <button type="button" data-bs-dismiss="modal"><i class="fa-light fa-xmark"></i></button>
                 </div>
                 <div class="modal-body">
-                    <form class="pricing-form">
+                    <form class="pricing-form" action="" method="post">{% csrf_token %}
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>نام شما</label>
-                                    <input type="text" name="name" required>
+                                    {{ project_form.name }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>شماره موبایل</label>
+                                    {{ project_form.phone_number }}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>ایمیل شما</label>
-                                    <input type="email" name="email" required>
+                                    {{ project_form.email }}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>موضوع را انتخاب کنید.</label>
-                                    <select name="subject" class="my-select" required>
-                                        <option value="" disabled selected hidden label="subject"></option>
-                                        <option value="1">طراحی وب سایت</option>
-                                        <option value="2">طراحی UI</option>
-                                        <option value="3">طراحی لوگو</option>
-                                        <option value="4">عکاسی</option>
-                                        <option value="5">ویرایش ویدیو</option>
-                                        <option value="6">سوشیال مارکتینگ</option>
-                                    </select>
+                                    {{ project_form.subject }}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>پیام شما ...</label>
-                                    <textarea name="message"></textarea>
+                                    {{ project_form.message }}
                                 </div>
                             </div>
+                            <input type="hidden" name="form_class" value="project_form">
                             <div class="col-12">
                                 <div class="btn-box justify-content-end">
                                     <button type="button" class="def-btn def-btn-2 border" data-bs-dismiss="modal">بستن</button>
-                                    <button type="button" class="def-btn">ارسال پیام</button>
+                                    <button type="submit" class="def-btn">ارسال پیام</button>
                                 </div>
                             </div>
                         </div>
